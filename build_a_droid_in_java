@@ -1,0 +1,44 @@
+public class Droid{
+  //objects
+  int batteryLevel;
+  String name;
+  
+  //constructors
+  public String toString(){
+    return "Hello, I'm the droid: " + name;
+  }
+
+  public void performTask(String task) {
+    System.out.println(name + " is performing task: " + task);
+    batteryLevel = batteryLevel - 10;
+  }
+  
+  public void energyTransfer(Droid otherDroid, int amount) {
+    this.batteryLevel = this.batteryLevel + amount;
+    otherDroid.batteryLevel = otherDroid.batteryLevel - amount;
+    System.out.println(otherDroid.name + " has transferred " + amount + " to " + name);
+    System.out.println(name + " is now at " + batteryLevel + "battery");
+    System.out.println(otherDroid.name + " is currently at " + otherDroid.batteryLevel);
+}
+  public void energyReport(int batteryLevel) {
+    System.out.println(name + " battery level is " + batteryLevel);
+  }
+
+  public Droid(String droidName) {
+    name = droidName;
+    batteryLevel = 100;
+  }
+  
+  //main
+  public static void main(String[] args) {
+    Droid Codey = new Droid("Codey");
+    Droid Margot = new Droid ("Margot");
+    Codey.performTask("singing");
+    Margot.performTask("dancing");
+    Codey.energyReport(50);
+    Margot.energyReport(75);
+    Codey.energyTransfer(Margot, 10);
+    System.out.println(Codey);
+    System.out.println(Codey.batteryLevel); 
+  }   
+}
